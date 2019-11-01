@@ -1,0 +1,7 @@
+body {
+    display: grid;
+    background-image: url('https://i.imgur.com/DX2ctRH.jpg') bottom center no-repeat;
+    
+    grid-template-columns: 2fr 1fr;
+
+}

@@ -2,7 +2,10 @@
 //array of arrays of sudoku boards
 
 /*----- app's state (variables) -----*/
-let board = new Array(81).fill(document.createElement('div'));
+
+//let this be the array that holds all the elements that make up the board
+//and make them all editable
+let board = new Array(81).fill(document.createElement('div').setAttribute("contenteditable", "true"));
 
 //I'm sorry about these variables but they represent a number of different sudoku boards that will be randomly pulled from
 //credit to Stephen Ostermiller and his project qqwing.com for these puzzle
@@ -93,6 +96,8 @@ let expertBoards = [
     '.85..714..1.......4...52..81.48...7.3....4.9...9735.8...1.....4......3.....58....',
     985367142213948765467152938154896273378214596629735481531679824896421357742583619
     ]
+let currentBoard = [];
+
 /*----- cached element references -----*/
 
 
@@ -109,7 +114,9 @@ init()
 
 function init(){
     //clear the board and reset the message
-
+    for (let index = 0; index < board.length; index++) {
+        board[index].textContent = '';
+    }
     render();
 }
 
