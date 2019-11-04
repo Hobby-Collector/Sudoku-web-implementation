@@ -100,11 +100,11 @@ let expertBoards = [
     751246389392718456846953172264587913917432865583169724135824697429671538678395241,
     '.85..714..1.......4...52..81.48...7.3....4.9...9735.8...1.....4......3.....58....',
     985367142213948765467152938154896273378214596629735481531679824896421357742583619
-    ]
+]
 let currentBoard = [];
 
 /*----- cached element references -----*/
-console.log(board);
+
 
 /*----- event listeners -----*/
 //text changed listener on each board El
@@ -140,31 +140,30 @@ function handleTileClickEvent(evt){
 
 function createTheDomBoard(){
     //make the board a grid
-    console
-    let testArr ;
-    document.querySelector(".board").style.display = "grid";
-    document.querySelector(".board").style.gridTemplateColums = "1fr 1fr 1fr";
-
+    
     //this makes a 3x3 board of sections and makes a 3x3 board of board elements in each section
-    for (let y = 0; y <= 54; y+=27) {
-        for (let x = 0; x < 9; x+=3) {
+    for (let y = 0; y <= 54; y+=27) { // this loops thrice
+        for (let x = 0; x < 9; x+=3) { //this loops thrice
             //make the sub boards and use the indices of all the 
             //for loops to generate the proper location of each div
             var miniBoard = document.createElement('section')
-            miniBoard.style.display = 'grid';
-            miniBoard.style.gridTemplateColumns = "1fr 1fr 1fr"
-            miniBoard.classList.add(`miniBoard${x}${y}`);
-            for (let aY = 0; aY < 27; aY+=9) {
-                for (let aX = 0; aX < 3; aX++) {
+            
+            miniBoard.classList.add(`miniBoard`);
+            miniBoard.id = `${x/3}${y/27}`;
+
+            for (let aY = 0; aY < 27; aY+=9) {// this loops thrice this is the y position
+                for (let aX = 0; aX < 3; aX++) {//this loops thrice this is the x position
+                    // odd math for each of the for loops makes the board array location match 
+                    //the location of the element added to the dom board
+                    board[aX+aY+y+x].id = `${aX+aY+y+x}`
                     miniBoard.appendChild(board[aX+aY+y+x]);
+                    console.log("MINI BOARD", miniBoard)
                 }
 
             }
-            document.querySelector(".board").appendChild(miniBoard)
-            console.log(miniBoard);
+            document.querySelector(".board").appendChild(miniBoard);
         }
     }
-    console.log(testArr)
 }
 //if text is entered and it is a number 
 //replace the previous digit input to the new digit
