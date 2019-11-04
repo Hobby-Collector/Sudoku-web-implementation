@@ -5,7 +5,11 @@
 
 //let this be the array that holds all the elements that make up the board
 //and make them all editable
-let board = new Array(81).fill(document.createElement('div').setAttribute("contenteditable", "true"));
+let board = new Array(81).fill(document.createElement('div'));
+ for (let i = 0; i < board.length; i++) {
+     board[i].setAttribute("contenteditable", "true");
+     
+ }
 
 //I'm sorry about these variables but they represent a number of different sudoku boards that will be randomly pulled from
 //credit to Stephen Ostermiller and his project qqwing.com for these puzzle
@@ -73,7 +77,8 @@ let intermediateBoards = [
     ['685..4..3..1........48..1..........2..6...51.4..9.....81...62.5........6...49..3.',
     685174923971325684324869157198653472736248519452917368819736245243581796567492831],
     ['......2.......9...31.8......8...2.5.....6.48.5.6...9.1...4...9.62..8..1.15...6.3.',
-    965137248842659173317824569481792356293561487576348921738415692624983715159276834]]
+    965137248842659173317824569481792356293561487576348921738415692624983715159276834]
+]
 let expertBoards = [
     '...5.1...6....974.......68.8.2....5...61....87.9.4.2.6.......97...9.7.1.......4..',
     478561329625389741193472685832796154546123978719845236281634597364957812957218463,
@@ -99,7 +104,7 @@ let expertBoards = [
 let currentBoard = [];
 
 /*----- cached element references -----*/
-
+console.log(board);
 
 /*----- event listeners -----*/
 //text changed listener on each board El
@@ -135,12 +140,12 @@ function handleTileClickEvent(evt){
 
 function createTheDomBoard(){
     //make the board a grid
-
+    console
     let testArr ;
     document.querySelector(".board").style.display = "grid";
     document.querySelector(".board").style.gridTemplateColums = "1fr 1fr 1fr";
 
-    //this makes 
+    //this makes a 3x3 board of sections and makes a 3x3 board of board elements in each section
     for (let y = 0; y <= 54; y+=27) {
         for (let x = 0; x < 9; x+=3) {
             //make the sub boards and use the indices of all the 
@@ -149,14 +154,14 @@ function createTheDomBoard(){
             miniBoard.style.display = 'grid';
             miniBoard.style.gridTemplateColumns = "1fr 1fr 1fr"
             miniBoard.classList.add(`miniBoard${x}${y}`);
-            document.querySelector(".board").appendChild(miniBoard)
             for (let aY = 0; aY < 27; aY+=9) {
                 for (let aX = 0; aX < 3; aX++) {
-                    board[aY+aX+y+x].style
                     miniBoard.appendChild(board[aX+aY+y+x]);
                 }
 
             }
+            document.querySelector(".board").appendChild(miniBoard)
+            console.log(miniBoard);
         }
     }
     console.log(testArr)
