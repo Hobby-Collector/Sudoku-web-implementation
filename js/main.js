@@ -5,10 +5,12 @@
 
 //let this be the array that holds all the elements that make up the board
 //and make them all editable
-let board = new Array(81).fill(document.createElement('div'));
- for (let i = 0; i < board.length; i++) {
-     board[i].setAttribute("contenteditable", "true");
-     
+
+let board = [];
+ for (let i = 0; i < 81; i++) {
+     domEl = document.createElement('div')
+     domEl.setAttribute("contenteditable", "true");
+     board[i] = domEl;
  }
 
 //I'm sorry about these variables but they represent a number of different sudoku boards that will be randomly pulled from
@@ -113,9 +115,36 @@ let currentBoard = [];
 
 //difficulty buttons listener
 
+document.addEventListener("DOMContentLoaded", function(event) {
+    //make the board a grid
+    
+    //this makes a 3x3 board of sections and makes a 3x3 board of board elements in each section
+    for (let y = 0; y <= 54; y+=27) { // this loops thrice this is the y position for the miniBoard
+        for (let x = 0; x < 9; x+=3) { //this loops thrice this is the x position for the miniBoard
+            //make the sub boards and use the indices of all the 
+            //for loops to generate the proper location of each div
+            var miniBoard = document.createElement('section')
+            
+            miniBoard.classList.add(`miniBoard`);
+            miniBoard.id = `${x/3}${y/27}`;
+            document.querySelector(".board").appendChild(miniBoard);
+
+            //this creates the elements and adds them to the miniboard
+            for (let aY = 0; aY < 27; aY+=9) {// this loops thrice this is the y position
+                for (let aX = 0; aX < 3; aX++) {//this loops thrice this is the x position
+                    // odd math for each of the for loops makes the board array location match 
+                    //the location of the element added to the dom board
+                    board[aX+aY+y+x].id = `${aX+aY+y+x}`
+                    miniBoard.appendChild(board[aX+aY+y+x]);
+                }
+
+            }
+        }
+    }
+})
+
 /*----- functions -----*/
-createTheDomBoard();
-init()
+//init()
 
 function init(){
     //clear the board and reset the message
@@ -138,33 +167,6 @@ function handleTileClickEvent(evt){
 
 }
 
-function createTheDomBoard(){
-    //make the board a grid
-    
-    //this makes a 3x3 board of sections and makes a 3x3 board of board elements in each section
-    for (let y = 0; y <= 54; y+=27) { // this loops thrice
-        for (let x = 0; x < 9; x+=3) { //this loops thrice
-            //make the sub boards and use the indices of all the 
-            //for loops to generate the proper location of each div
-            var miniBoard = document.createElement('section')
-            
-            miniBoard.classList.add(`miniBoard`);
-            miniBoard.id = `${x/3}${y/27}`;
-
-            for (let aY = 0; aY < 27; aY+=9) {// this loops thrice this is the y position
-                for (let aX = 0; aX < 3; aX++) {//this loops thrice this is the x position
-                    // odd math for each of the for loops makes the board array location match 
-                    //the location of the element added to the dom board
-                    board[aX+aY+y+x].id = `${aX+aY+y+x}`
-                    miniBoard.appendChild(board[aX+aY+y+x]);
-                    console.log("MINI BOARD", miniBoard)
-                }
-
-            }
-            document.querySelector(".board").appendChild(miniBoard);
-        }
-    }
-}
 //if text is entered and it is a number 
 //replace the previous digit input to the new digit
 
