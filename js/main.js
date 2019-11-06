@@ -1,21 +1,6 @@
-/*----- constants -----*/
-//array of arrays of sudoku boards
-
-/*----- app's state (variables) -----*/
-
-//let this be the array that holds all the elements that make up the board
-//and make them all editable
-
-let board = [];
- for (let i = 0; i < 81; i++) {
-     domEl = document.createElement('div')
-     domEl.setAttribute("contenteditable", "true");
-     board[i] = domEl;
- }
-
-//I'm sorry about these variables but they represent a number of different sudoku boards that will be randomly pulled from
+/*----- constants -----*///I'm sorry about these variables but they represent a number of different sudoku boards that will be randomly pulled from
 //credit to Stephen Ostermiller and his project qqwing.com for these puzzle
-let boardsObj = {
+const boardsObj = {
     simple: [
     ['.8.4...2......97.........46.....8.......67.59....5.2.7.78.9...4.567.18..19..45..2',
     681473925542619738937582146725938461814267359369154287278396514456721893193845672],
@@ -112,6 +97,20 @@ let boardsObj = {
     }
 }
 
+/*----- app's state (variables) -----*/
+
+//let this be the array that holds all the elements that make up the board
+//and make them all editable
+
+let board = [];
+ for (let i = 0; i < 81; i++) {
+     domEl = document.createElement('div')
+     domEl.setAttribute("contenteditable", "true");
+     board[i] = domEl;
+ }
+
+
+
 /*----- cached element references -----*/
 
 
@@ -156,7 +155,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 /*----- functions -----*/
 //init()
-
 function init(){
     //clear the board and reset the message
     for (let index = 0; index < board.length; index++) {
@@ -165,6 +163,7 @@ function init(){
     render();
 }
 
+//render function
 function render(){
     //if all board spot have text compare to the solution highlight incorrect answers or display winner message
 
@@ -183,6 +182,9 @@ function handleTextChangedEvent(evt){
     }
 }
 function handleDifficultyClickEvent(evt){
+
+//difficulty button listener function
+//pull a random puzzle from the array of the related id name
     console.log(evt.target.id);
    boardsObj.createBoard(evt.target.id) 
 }
@@ -191,8 +193,5 @@ function handleDifficultyClickEvent(evt){
 //if digit entered does not match the 'correct' digit in the solution arr set border to red 
 //otherwise make it green
 
-//difficulty button listener function
-//pull a random puzzle from the array of the related id name
 
-//render function
 
