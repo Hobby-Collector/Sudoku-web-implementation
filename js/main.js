@@ -156,9 +156,9 @@ function init(){
 
 //render function
 function render(){
-    if (boardsObj.current !== []) {
+    if (boardsObj.current.length !== 0) {
         boardEls.forEach((divEl,idx) =>{
-            divEl.textContent = boardsObj.current[0][idx];
+            divEl.textContent = (boardsObj.current[0][idx] !== '.' ?  boardsObj.current[0][idx]:"");
         })
     }
 
@@ -178,10 +178,12 @@ function handleTextChangedEvent(evt){
 
 //difficulty button listener function
 function handleDifficultyClickEvent(evt){
-
-//pull a random puzzle from the array of the related id name
+    // clear the current board
     init();
+
+    //call createBoard to do it's thing
     createBoard(evt.target.id);
+    render();
 }
 
 //input focus lost listener function
@@ -195,5 +197,6 @@ function createBoard (boardTypeStr){
     boardsObj.current.length = 0;
     boardsObj.current.push(carrierArr[0].split(''));
     boardsObj.current.push(carrierArr[1].split(''));
+    console.log(boardsObj.current);
     return boardsObj.current;
 }
