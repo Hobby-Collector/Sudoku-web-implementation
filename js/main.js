@@ -2,8 +2,8 @@
 //credit to Stephen Ostermiller and his project qqwing.com for these puzzle
 const boardsObj = {
     simple: [
-    ['.8.4...2......97.........46.....8.......67.59....5.2.7.78.9...4.567.18..19..45..2',
-    681473925542619738937582146725938461814267359369154287278396514456721893193845672],
+        ['.8.4...2......97.........46.....8.......67.59....5.2.7.78.9...4.567.18..19..45..2',
+        681473925542619738937582146725938461814267359369154287278396514456721893193845672],
     ['....4.........5.....6.8..9.28.3.465..1....8.93.5..64...41......8...3...1..25....4',
     158943276793625148426187395289314657614752839375896412541278963867439521932561784],
     ['....2....97...........1.9...27.3.6.1........2..1.5..431....7....9...4.6..63..2.74',
@@ -24,8 +24,8 @@ const boardsObj = {
     296734158841529763735168294587412639123695847469873512954281376372956481618347925],
 ],
     easy: [
-    ['.....4..785..2...3674..3.5..9.2.8............3..........3.87.2572..5.8.4.4..6.3.9',
-    132594687859726413674813952496278531285931746317645298963487125721359864548162379],
+        ['.....4..785..2...3674..3.5..9.2.8............3..........3.87.2572..5.8.4.4..6.3.9',
+        132594687859726413674813952496278531285931746317645298963487125721359864548162379],
     ['.......23..2.64..5.....76........9.6....3....96..2.54....6....1.3675...9.2.......',
     671589423892364175354217698218475936547936812963128547789642351436751289125893764],
     ['.9.....2..7...3......847....8...9.5.9..53.....1............15....2.9.143..5.84.9.',
@@ -46,8 +46,8 @@ const boardsObj = {
     657842391843197526129365487238956714496781235571423968915278643364519872782634159]
 ],
     intermediate: [
-    ['2.3..54.9.6....2..1.53....6..7.......5.......942......7...41562..62..9....4.3...7',
-    273685419468179235195324876387512694651493728942768351739841562816257943524936187],
+        ['2.3..54.9.6....2..1.53....6..7.......5.......942......7...41562..62..9....4.3...7',
+        273685419468179235195324876387512694651493728942768351739841562816257943524936187],
     ['7....4.....3.2...828..71.......3..8..4....13.1.6.8............79276......6.24....',
     795864321613529748284371596579132684842796135136485972458913267927658413361247859],
     ['6.5.7....7..1.8.4...........8.7.59..5...1...896..8...4.42....19....4.7..........5',
@@ -68,63 +68,59 @@ const boardsObj = {
     965137248842659173317824569481792356293561487576348921738415692624983715159276834]
 ],
     expert: [
-    '...5.1...6....974.......68.8.2....5...61....87.9.4.2.6.......97...9.7.1.......4..',
-    478561329625389741193472685832796154546123978719845236281634597364957812957218463,
-    '......2.6..9......8...3.1....2......58.92.7..19...6..8.26....5.71........5.8..3..',
-    431785296279641583865239174642178935583924761197356428326417859718593642954862317,
-    '...57.........264.4.8.9..2..7.....8........9...921.4.6...78..12...........2.658..',
-    926574138715832649438691725274956381561348297389217456643789512857123964192465873,
-    '.2.71...5.....5.9.4......8..5.8.7......6.....7..4.9.16........817...6.5..9....7..',
-    926718435817345692435962187651837249249651873783429516564173928178296354392584761,
-    '.9..85..4..4..7...58.9.2.6.........3....26.........457......97.7.......2.29..45..',
-    697185234214367895583942761148579623375426189962813457436251978751698342829734516,
-    '84..1..5..19.6..3.2....8..9.....29..........3....8....5......84.98.563.1....3.6..',
-    846319257719265438235478169381542976652197843974683512563921784498756321127834695,
-    '..526.3989...........4...6...3..7.8....34.7..5.9..64......34..6....9..5......8..7',
-    745261398961853274238479561413927685826345719579186432197534826684792153352618947,
-    '6.3...8......6..9..4..2.......8.92...6..3...77.4..5...45.......932....8......275.',
-    693541872271368495548927361315879246869234517724615938457183629932756184186492753,
-    '75....3.9.......56.....31...6.....13.17...8.......97.4.3...4...4.9.7.5..6.8.9....',
-    751246389392718456846953172264587913917432865583169724135824697429671538678395241,
-    '.85..714..1.......4...52..81.48...7.3....4.9...9735.8...1.....4......3.....58....',
-    985367142213948765467152938154896273378214596629735481531679824896421357742583619
-],
-    current: [],
-
-    createBoard: function(boardTypeStr){
-        current = this[boardTypeStr][Math.floor(Math.random() * Math.floor(10))];
-        return this.current;
-    }
+        '...5.1...6....974.......68.8.2....5...61....87.9.4.2.6.......97...9.7.1.......4..',
+        478561329625389741193472685832796154546123978719845236281634597364957812957218463,
+        '......2.6..9......8...3.1....2......58.92.7..19...6..8.26....5.71........5.8..3..',
+        431785296279641583865239174642178935583924761197356428326417859718593642954862317,
+        '...57.........264.4.8.9..2..7.....8........9...921.4.6...78..12...........2.658..',
+        926574138715832649438691725274956381561348297389217456643789512857123964192465873,
+        '.2.71...5.....5.9.4......8..5.8.7......6.....7..4.9.16........817...6.5..9....7..',
+        926718435817345692435962187651837249249651873783429516564173928178296354392584761,
+        '.9..85..4..4..7...58.9.2.6.........3....26.........457......97.7.......2.29..45..',
+        697185234214367895583942761148579623375426189962813457436251978751698342829734516,
+        '84..1..5..19.6..3.2....8..9.....29..........3....8....5......84.98.563.1....3.6..',
+        846319257719265438235478169381542976652197843974683512563921784498756321127834695,
+        '..526.3989...........4...6...3..7.8....34.7..5.9..64......34..6....9..5......8..7',
+        745261398961853274238479561413927685826345719579186432197534826684792153352618947,
+        '6.3...8......6..9..4..2.......8.92...6..3...77.4..5...45.......932....8......275.',
+        693541872271368495548927361315879246869234517724615938457183629932756184186492753,
+        '75....3.9.......56.....31...6.....13.17...8.......97.4.3...4...4.9.7.5..6.8.9....',
+        751246389392718456846953172264587913917432865583169724135824697429671538678395241,
+        '.85..714..1.......4...52..81.48...7.3....4.9...9735.8...1.....4......3.....58....',
+        985367142213948765467152938154896273378214596629735481531679824896421357742583619
+    ],
+    current: []
+    
+    
 }
 
 /*----- app's state (variables) -----*/
 
-//let this be the array that holds all the elements that make up the board
+//let this be the array that holds all the elements that make up the boardEls
 //and make them all editable
-
-let board = [];
+let boardEls = [];
  for (let i = 0; i < 81; i++) {
      domEl = document.createElement('div')
      domEl.setAttribute("contenteditable", "true");
-     board[i] = domEl;
+     boardEls[i] = domEl;
  }
 
 /*----- cached element references -----*/
 
 
 /*----- event listeners -----*/
-//text changed listener for board
+//text changed listener for boardEls
 document.getElementById('board').addEventListener('keyup',handleTextChangedEvent)
 //input lost focus listener
 
 //difficulty buttons listener
 document.getElementById('difficulty').addEventListener('click',handleDifficultyClickEvent)
 
-//dom load event poulates the dom with the board
+//dom load event poulates the dom with the boardEls
 document.addEventListener('DOMContentLoaded', function(event) {
-    //make the board a grid
+    //make the boardEls a grid
     
-    //this makes a 3x3 board of sections and makes a 3x3 board of board elements in each section
+    //this makes a 3x3 boardEls of sections and makes a 3x3 boardEls of boardEls elements in each section
     for (let y = 0; y <= 54; y+=27) { // this loops thrice this is the y position for the miniBoard
         for (let x = 0; x < 9; x+=3) { //this loops thrice this is the x position for the miniBoard
             //make the sub boards and use the indices of all the 
@@ -134,39 +130,42 @@ document.addEventListener('DOMContentLoaded', function(event) {
             miniBoard.classList.add(`miniBoard`);
             miniBoard.id = `${x/3}${y/27}`;
             document.getElementById("board").appendChild(miniBoard);
-
+            
             //this creates the elements and adds them to the miniboard
             for (let aY = 0; aY < 27; aY+=9) {// this loops thrice this is the y position
                 for (let aX = 0; aX < 3; aX++) {//this loops thrice this is the x position
-                    // odd math for each of the for loops makes the board array location match 
-                    //the location of the element added to the dom board
-                    board[aX+aY+y+x].id = `${aX+aY+y+x}`
-                    miniBoard.appendChild(board[aX+aY+y+x]);
+                    // odd math for each of the for loops makes the boardEls array location match 
+                    //the location of the element added to the dom boardEls
+                    boardEls[aX+aY+y+x].id = `${aX+aY+y+x}`
+                    miniBoard.appendChild(boardEls[aX+aY+y+x]);
                 }
-
+                
             }
         }
     }
-
-
+    
+    
 })
 
 /*----- functions -----*/
 //init()
 function init(){
     //clear the board and reset the message
-    for (let index = 0; index < board.length; index++) {
-        board[index].textContent = '';
+    for (let index = 0; index < boardEls.length; index++) {
+        boardEls[index].textContent = '';
     }
     render();
 }
 
 //render function
 function render(){
-    //if all board spot have text compare to the solution highlight incorrect answers or display winner message
+    if (boardsObj.current !== null) {
+        boardEls.forEach(divEl =>{
+            divEl.textContent = boardsObj.current[divEl.id];
+        })
+    }
 
 }
-f
 //input changed listener function
 function handleTextChangedEvent(evt){
     //if the tag is a div
@@ -185,12 +184,15 @@ function handleDifficultyClickEvent(evt){
 
 //pull a random puzzle from the array of the related id name
     init();
-    boardsObj.createBoard(evt.target.id)
+    createBoard(evt.target.id)
 }
 
 //input focus lost listener function
 //if digit entered does not match the 'correct' digit in the solution arr set border to red 
 //otherwise make it green
 
-
+function createBoard (boardTypeStr){
+    boardsObj.current = boardsObj[boardTypeStr][Math.floor(Math.random() * Math.floor(10))];
+    return boardsObj.current;
+}
 
