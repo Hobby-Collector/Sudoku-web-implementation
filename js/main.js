@@ -2,8 +2,8 @@
 //credit to Stephen Ostermiller and his project qqwing.com for these puzzle
 const boardsObj = {
     simple: [
-        ['.8.4...2......97.........46.....8.......67.59....5.2.7.78.9...4.567.18..19..45..2',
-        '681473925542619738937582146725938461814267359369154287278396514456721893193845672'],
+    ['.8.4...2......97.........46.....8.......67.59....5.2.7.78.9...4.567.18..19..45..2',
+    '681473925542619738937582146725938461814267359369154287278396514456721893193845672'],
     ['....4.........5.....6.8..9.28.3.465..1....8.93.5..64...41......8...3...1..25....4',
     '158943276793625148426187395289314657614752839375896412541278963867439521932561784'],
     ['....2....97...........1.9...27.3.6.1........2..1.5..431....7....9...4.6..63..2.74',
@@ -99,11 +99,11 @@ const boardsObj = {
 //let this be the array that holds all the elements that make up the boardEls
 //and make them all editable
 let boardEls = [];
- for (let i = 0; i < 81; i++) {
-     domEl = document.createElement('div')
-     domEl.setAttribute("contenteditable", "true");
-     boardEls[i] = domEl;
- }
+for (let i = 0; i < 81; i++) {
+    domEl = document.createElement('div')
+    domEl.setAttribute("contenteditable", "true");
+    boardEls[i] = domEl;
+}
 
 /*----- cached element references -----*/
 
@@ -161,10 +161,10 @@ function render(){
             divEl.textContent = (boardsObj.current[0][idx] !== '.' ?  boardsObj.current[0][idx]:"");
         })
     }
-
 }
 //input changed listener function
 function handleTextChangedEvent(evt){
+    
     //if the tag is a div
     if(evt.target.tagName !== 'DIV'||evt.target.textContent === NaN){
         return;
@@ -174,6 +174,11 @@ function handleTextChangedEvent(evt){
          evt.keyCode !== 16 && evt.keyCode !== 20|| evt.keyCode > 57){
         evt.target.textContent = "";
     }
+
+    let boardComplete = true;
+    for (el in boardEls)if (el.textContent === '')
+            boardComplete = false;
+        
 }
 
 //difficulty button listener function
@@ -197,6 +202,5 @@ function createBoard (boardTypeStr){
     boardsObj.current.length = 0;
     boardsObj.current.push(carrierArr[0].split(''));
     boardsObj.current.push(carrierArr[1].split(''));
-    console.log(boardsObj.current);
     return boardsObj.current;
 }
