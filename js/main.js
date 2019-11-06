@@ -15,7 +15,8 @@ let board = [];
 
 //I'm sorry about these variables but they represent a number of different sudoku boards that will be randomly pulled from
 //credit to Stephen Ostermiller and his project qqwing.com for these puzzle
-let simpleBoards = [
+let boardsObj = {
+    simple: [
     ['.8.4...2......97.........46.....8.......67.59....5.2.7.78.9...4.567.18..19..45..2',
     681473925542619738937582146725938461814267359369154287278396514456721893193845672],
     ['....4.........5.....6.8..9.28.3.465..1....8.93.5..64...41......8...3...1..25....4',
@@ -36,8 +37,8 @@ let simpleBoards = [
     129867453658134297347259681491725836735681942862493175914372568583916724276548319],
     ['2.6.341.........6.7..1....4.87.1.....2....8474.........54......3...56...618....25',
     296734158841529763735168294587412639123695847469873512954281376372956481618347925],
-]
-let easyBoards = [
+],
+    easy: [
     ['.....4..785..2...3674..3.5..9.2.8............3..........3.87.2572..5.8.4.4..6.3.9',
     132594687859726413674813952496278531285931746317645298963487125721359864548162379],
     ['.......23..2.64..5.....76........9.6....3....96..2.54....6....1.3675...9.2.......',
@@ -58,8 +59,8 @@ let easyBoards = [
     591348627427596318836712549152479836974863152368125974683257491219634785745981263],
     ['....4...1....9.52...9..5...2.....7.....78..35.7142....9..27..43.....9.7.....3.1..',
     657842391843197526129365487238956714496781235571423968915278643364519872782634159]
-]
-let intermediateBoards = [
+],
+    intermediate: [
     ['2.3..54.9.6....2..1.53....6..7.......5.......942......7...41562..62..9....4.3...7',
     273685419468179235195324876387512694651493728942768351739841562816257943524936187],
     ['7....4.....3.2...828..71.......3..8..4....13.1.6.8............79276......6.24....',
@@ -80,8 +81,8 @@ let intermediateBoards = [
     685174923971325684324869157198653472736248519452917368819736245243581796567492831],
     ['......2.......9...31.8......8...2.5.....6.48.5.6...9.1...4...9.62..8..1.15...6.3.',
     965137248842659173317824569481792356293561487576348921738415692624983715159276834]
-]
-let expertBoards = [
+],
+    expert: [
     '...5.1...6....974.......68.8.2....5...61....87.9.4.2.6.......97...9.7.1.......4..',
     478561329625389741193472685832796154546123978719845236281634597364957812957218463,
     '......2.6..9......8...3.1....2......58.92.7..19...6..8.26....5.71........5.8..3..',
@@ -102,17 +103,27 @@ let expertBoards = [
     751246389392718456846953172264587913917432865583169724135824697429671538678395241,
     '.85..714..1.......4...52..81.48...7.3....4.9...9735.8...1.....4......3.....58....',
     985367142213948765467152938154896273378214596629735481531679824896421357742583619
-]
-let currentBoard = [];
+],
+    current: [],
+
+    createBoard: function(boardTypeStr){
+        current = this[boardTypeStr][Math.floor(Math.random() * Math.floor(10))];
+        return this.current;
+    }
+}
 
 /*----- cached element references -----*/
 
 
 /*----- event listeners -----*/
+//text changed listener for board
+document.getElementById('board').addEventListener('keyup',handleTextChangedEvent)
 //input lost focus listener
 
 //difficulty buttons listener
+document.getElementById('difficulty').addEventListener('click',handleDifficultyClickEvent)
 
+//dom load event poulates the dom with the board
 document.addEventListener('DOMContentLoaded', function(event) {
     //make the board a grid
     
@@ -141,10 +152,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 
 
-    // // //text changed listener for board
-    // document.getElementById('board').addEventListener('keydown',handleTextChangedEvent)
-    // document.getElementById('board').addEventListener('keypress',handleTextChangedEvent)
-    document.getElementById('board').addEventListener('keyup',handleTextChangedEvent)
 })
 
 /*----- functions -----*/
@@ -175,7 +182,10 @@ function handleTextChangedEvent(evt){
         evt.target.textContent = "";
     }
 }
-
+function handleDifficultyClickEvent(evt){
+    console.log(evt.target.id);
+   boardsObj.createBoard(evt.target.id) 
+}
 
 //input focus lost listener function
 //if digit entered does not match the 'correct' digit in the solution arr set border to red 
