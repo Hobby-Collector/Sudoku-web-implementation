@@ -101,7 +101,6 @@ const boardsObj = {
 let boardEls = [];
 for (let i = 0; i < 81; i++) {
     domEl = document.createElement('div')
-    domEl.setAttribute("contenteditable", "true");
     boardEls[i] = domEl;
 }
 
@@ -159,6 +158,7 @@ function render(){
     if (boardsObj.current.length !== 0) {
         boardEls.forEach((divEl,idx) =>{
             divEl.textContent = (boardsObj.current[0][idx] !== '.' ?  boardsObj.current[0][idx]:"");
+            divEl.contentEditable = divEl.textContent === "";
         })
     }
 }
