@@ -109,8 +109,6 @@ let board = [];
      board[i] = domEl;
  }
 
-
-
 /*----- cached element references -----*/
 
 
@@ -168,7 +166,7 @@ function render(){
     //if all board spot have text compare to the solution highlight incorrect answers or display winner message
 
 }
-
+f
 //input changed listener function
 function handleTextChangedEvent(evt){
     //if the tag is a div
@@ -181,12 +179,13 @@ function handleTextChangedEvent(evt){
         evt.target.textContent = "";
     }
 }
-function handleDifficultyClickEvent(evt){
 
 //difficulty button listener function
+function handleDifficultyClickEvent(evt){
+
 //pull a random puzzle from the array of the related id name
-    console.log(evt.target.id);
-   boardsObj.createBoard(evt.target.id) 
+    init();
+    boardsObj.createBoard(evt.target.id)
 }
 
 //input focus lost listener function
