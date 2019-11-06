@@ -88,25 +88,15 @@ const boardsObj = {
         '751246389392718456846953172264587913917432865583169724135824697429671538678395241'],
         ['.85..714..1.......4...52..81.48...7.3....4.9...9735.8...1.....4......3.....58....',
         '985367142213948765467152938154896273378214596629735481531679824896421357742583619']
-    ],
+],
     current: []
-    
-    
 }
 
 /*----- app's state (variables) -----*/
 
-//let this be the array that holds all the elements that make up the boardEls
-//and make them all editable
-let boardEls = [];
-for (let i = 0; i < 81; i++) {
-    domEl = document.createElement('div')
-    boardEls[i] = domEl;
-}
-
 /*----- cached element references -----*/
-
-
+//this hold all the div element on the board then is turned into referances to each div
+let boardEls = new Array();
 /*----- event listeners -----*/
 //text changed listener for boardEls
 document.getElementById('board').addEventListener('keyup',handleTextChangedEvent)
@@ -117,11 +107,15 @@ document.getElementById('difficulty').addEventListener('click',handleDifficultyC
 
 //dom load event poulates the dom with the boardEls
 document.addEventListener('DOMContentLoaded', function(event) {
+    for (let i = 0; i < 81; i++) {
+        domEl = document.createElement('div')
+        boardEls[i] = domEl;
+    }
     //make the boardEls a grid
     
     //this makes a 3x3 boardEls of sections and makes a 3x3 boardEls of boardEls elements in each section
-    for (let y = 0; y <= 54; y+=27) { // this loops thrice this is the y position for the miniBoard
-        for (let x = 0; x < 9; x+=3) { //this loops thrice this is the x position for the miniBoard
+    for (let y = 0; y <= 54; y+=27) { // this loops thrice. this is the y position for the miniBoard
+        for (let x = 0; x < 9; x+=3) { //this loops thrice. this is the x position for the miniBoard
             //make the sub boards and use the indices of all the 
             //for loops to generate the proper location of each div
             var miniBoard = document.createElement('section')
@@ -131,8 +125,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
             document.getElementById("board").appendChild(miniBoard);
             
             //this creates the elements and adds them to the miniboard
-            for (let aY = 0; aY < 27; aY+=9) {// this loops thrice this is the y position
-                for (let aX = 0; aX < 3; aX++) {//this loops thrice this is the x position
+            for (let aY = 0; aY < 27; aY+=9) {// this loops thrice. this is the y position
+                for (let aX = 0; aX < 3; aX++) {//this loops thrice. this is the x position
                     // odd math for each of the for loops makes the boardEls array location match 
                     //the location of the element added to the dom boardEls
                     boardEls[aX+aY+y+x].id = `${aX+aY+y+x}`
@@ -141,6 +135,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
             }
         }
     }
+    boardEls = Array.from(document.querySelectorAll('div'));
+    boardEls.sort((a,b)=>{return (a.id - b.id)});
 })
 
 /*----- functions -----*/
@@ -166,7 +162,7 @@ function render(){
 function handleTextChangedEvent(evt){
     
     //if the tag is a div
-    if(evt.target.tagName !== 'DIV'||evt.target.textContent === NaN){
+    if(evt.target.tagName !== 'DIV'){
         return;
     }else if (evt.keyCode >= 48 && evt.keyCode <= 57){
         evt.target.textContent = evt.key;
@@ -174,15 +170,18 @@ function handleTextChangedEvent(evt){
          evt.keyCode !== 16 && evt.keyCode !== 20|| evt.keyCode > 57){
         evt.target.textContent = "";
     }
-
-    let boardComplete = true;
-    for (el in boardEls)if (el.textContent === '')
-            boardComplete = false;
-        
+    let tempArr = [];
+    boardEls.forEach((el,idx)=>{
+        tempArr[idx] = (el.innerText === boardsObj.current[1][idx])
+    })
+    if(!tempArr.includes(false))console.log('complete board good job');
 }
 
 //difficulty button listener function
 function handleDifficultyClickEvent(evt){
+    if (evt.target.tagName !== "BUTTON") {
+        return;
+    }
     // clear the current board
     init();
 
@@ -190,10 +189,6 @@ function handleDifficultyClickEvent(evt){
     createBoard(evt.target.id);
     render();
 }
-
-//input focus lost listener function
-//if digit entered does not match the 'correct' digit in the solution arr set border to red 
-//otherwise make it green
 
 //create board function finds a random board from the different array's 
 //and assigns it to the current board
