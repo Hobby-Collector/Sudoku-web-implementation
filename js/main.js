@@ -109,13 +109,11 @@ let currentBoard = [];
 
 
 /*----- event listeners -----*/
-//text changed listener on each board El
-
 //input lost focus listener
 
 //difficulty buttons listener
 
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener('DOMContentLoaded', function(event) {
     //make the board a grid
     
     //this makes a 3x3 board of sections and makes a 3x3 board of board elements in each section
@@ -127,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             
             miniBoard.classList.add(`miniBoard`);
             miniBoard.id = `${x/3}${y/27}`;
-            document.querySelector(".board").appendChild(miniBoard);
+            document.getElementById("board").appendChild(miniBoard);
 
             //this creates the elements and adds them to the miniboard
             for (let aY = 0; aY < 27; aY+=9) {// this loops thrice this is the y position
@@ -141,6 +139,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
         }
     }
+
+
+    // // //text changed listener for board
+    // document.getElementById('board').addEventListener('keydown',handleTextChangedEvent)
+    // document.getElementById('board').addEventListener('keypress',handleTextChangedEvent)
+    document.getElementById('board').addEventListener('keyup',handleTextChangedEvent)
 })
 
 /*----- functions -----*/
@@ -160,15 +164,18 @@ function render(){
 }
 
 //input changed listener function
-function handleTileClickEvent(evt){
-    if(evt.target.textContent !==''||evt.target.tagName !== 'INPUT'){
+function handleTextChangedEvent(evt){
+    //if the tag is a div
+    if(evt.target.tagName !== 'DIV'||evt.target.textContent === NaN){
         return;
+    }else if (evt.keyCode >= 48 && evt.keyCode <= 57){
+        evt.target.textContent = evt.key;
+    }else if (evt.keyCode < 48 && evt.keyCode !== 9 &&
+         evt.keyCode !== 16 && evt.keyCode !== 20|| evt.keyCode > 57){
+        evt.target.textContent = "";
     }
-
 }
 
-//if text is entered and it is a number 
-//replace the previous digit input to the new digit
 
 //input focus lost listener function
 //if digit entered does not match the 'correct' digit in the solution arr set border to red 

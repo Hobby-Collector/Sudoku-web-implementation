@@ -1,27 +1,33 @@
 body {
     display: grid;
-    
     grid-template-columns: 2fr 1fr;
-
-    border: solid 1px blue;
-
+    grid-template-rows: 3fr 1fr;
 }
 
 .difficulty{
     display: flex;
     flex-direction: column;
     align-items: center;
+    grid-row: 3/4;
+    grid-column: 2/3;
 }
 
 .miniBoard{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     border: solid 1px black;
-
 }
 
-.board {
+.boardContainer{
+ display: grid;
+ grid-template-columns: 2fr 2fr;
+ grid-template-rows: 1fr 3fr;
+}
+
+#board {
     display: grid;
+    grid-column: 2/3;
+    grid-row: 2/3;
     grid-template-columns: 1fr 1fr 1fr;
     width: 10rem;
     height: 10rem;
