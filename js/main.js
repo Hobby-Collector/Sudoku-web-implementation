@@ -95,6 +95,8 @@ const boardsObj = {
 
 /*----- app's state (variables) -----*/
 
+let solvingArr = [];
+
 /*----- cached element references -----*/
 //this hold all the div element on the board then is turned into referances to each div
 let boardEls = new Array();
@@ -150,6 +152,19 @@ function init(){
     }
     document.getElementById("message").textContent = "Sudoku";
     render();
+
+    //this bit of code is for demonstrating a solve and should not be counted in the code
+        //fills an array with numbers from 0-80
+        solvingArr= Array.from(Array(81).keys());
+
+        //shuffles using the fisher-Yates algorithm for shuffling
+        var j, x, i;
+        for (i = solvingArr.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = solvingArr[i];
+            solvingArr[i] = solvingArr[j];
+            solvingArr[j] = x;
+        }
 }
 
 //render function
@@ -173,17 +188,20 @@ function handleTextChangedEvent(evt){
          evt.keyCode !== 16 && evt.keyCode !== 20|| evt.keyCode > 57){
         evt.target.textContent = "";
     }
-    let tempArr = [];
-    boardEls.forEach((el,idx)=>{
-        tempArr[idx] = (el.innerText === boardsObj.current[1][idx])
-    })
-    if(!tempArr.includes(false))document.getElementById('message')
-        .textContent = "There is nothing to regret with a job well done. -Joe Garcia";
+    
+    if(boardSolved()){
+        document.getElementById('message').textContent = "There is nothing to regret with a job well done. -Joe Garcia";
+    }
 }
 
 //difficulty button listener function
 function handleDifficultyClickEvent(evt){
     if (evt.target.tagName !== "BUTTON") {
+        return;
+    }
+
+    if (evt.target.id === 'hint') {
+        if(boardsObj.current.length) hintFunction();
         return;
     }
     // clear the current board
@@ -202,4 +220,20 @@ function createBoard (boardTypeStr){
     boardsObj.current.push(carrierArr[0].split(''));
     boardsObj.current.push(carrierArr[1].split(''));
     return boardsObj.current;
+}
+
+
+//this function is written for demonstration purposes and should not be inventoried
+function hintFunction(){
+        let carrier = solvingArr.pop();
+        boardEls[carrier].textContent = boardsObj.current[1][carrier];
+}
+
+function boardSolved(){
+    let tempArr = [];
+    boardEls.forEach((el,idx)=>{
+        if (el.innerText ==='') {return false;}
+        tempArr[idx] = (el.innerText === boardsObj.current[1][idx])
+    })
+    return !tempArr.includes(false);
 }
