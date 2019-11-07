@@ -1,4 +1,5 @@
-/*----- constants -----*///I'm sorry about these variables but they represent a number of different sudoku boards that will be randomly pulled from
+/*----- constants -----*/
+//I'm sorry about these variables but they represent a number of different sudoku boards that will be randomly pulled from
 //credit to Stephen Ostermiller and his project qqwing.com for these puzzle
 const boardsObj = {
     simple: [
