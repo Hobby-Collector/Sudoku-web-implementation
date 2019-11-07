@@ -94,7 +94,6 @@ const boardsObj = {
 }
 
 /*----- app's state (variables) -----*/
-
 /*----- cached element references -----*/
 //this hold all the div element on the board then is turned into referances to each div
 let boardEls = new Array();
