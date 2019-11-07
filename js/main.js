@@ -114,7 +114,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
     //make the boardEls a grid
     
-    //this makes a 3x3 boardEls of sections and makes a 3x3 boardEls of boardEls elements in each section
+    //this makes a 3x3 boardEls of sections and makes a 3x3 
+    //boardEls of boardEls elements in each section
     for (let y = 0; y <= 54; y+=27) { // this loops thrice. this is the y position for the miniBoard
         for (let x = 0; x < 9; x+=3) { //this loops thrice. this is the x position for the miniBoard
             //make the sub boards and use the indices of all the 
@@ -144,9 +145,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
 init();
 function init(){
     //clear the board and reset the message
-    for (let index = 0; index < boardEls.length; index++) {
+    for (let index = 0; index < boardEls.length; index++){
         boardEls[index].textContent = '';
     }
+    document.getElementById("message").textContent = "Sudoku";
     render();
 }
 
@@ -175,7 +177,8 @@ function handleTextChangedEvent(evt){
     boardEls.forEach((el,idx)=>{
         tempArr[idx] = (el.innerText === boardsObj.current[1][idx])
     })
-    if(!tempArr.includes(false))console.log('complete board good job');
+    if(!tempArr.includes(false))document.getElementById('message')
+        .textContent = "There is nothing to regret with a job well done. -Joe Garcia";
 }
 
 //difficulty button listener function

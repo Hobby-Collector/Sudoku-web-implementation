@@ -23,6 +23,13 @@ button{
     grid-template-columns: 1fr 1fr 1fr;
     border: solid 1px black;
 }
+h1{
+    text-align: center;
+}
+h2{
+    background-color: #207181;
+    border: solid 2px black;
+}
 #message{
     text-align: center;
 }
