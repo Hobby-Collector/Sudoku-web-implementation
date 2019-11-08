@@ -36,3 +36,5 @@ Still a lot of work left to do on this project.
 	☐ Note taking, akin to the functionality of most Sudoku apps out there
 
 	☐ correct and incorrect highlighting once the board is filled out.
+
+	☐ make website mobile friendly
