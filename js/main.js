@@ -153,7 +153,7 @@ function init(){
     document.getElementById("message").textContent = "Sudoku";
     render();
 
-    //this bit of code is for demonstrating a solve and should not be counted in the code
+        //this bit of code is for demonstrating a solve and should not be counted in the code
         //fills an array with numbers from 0-80
         solvingArr= Array.from(Array(81).keys());
 
@@ -188,7 +188,7 @@ function handleTextChangedEvent(evt){
          evt.keyCode !== 16 && evt.keyCode !== 20|| evt.keyCode > 57){
         evt.target.textContent = "";
     }
-    
+
     if(boardSolved()){
         document.getElementById('message').textContent = "There is nothing to regret with a job well done. -Joe Garcia";
     }
