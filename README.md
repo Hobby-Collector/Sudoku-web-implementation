@@ -18,7 +18,7 @@ For a fun project I decided I need to turn something very relaxing and time cons
 <img src= "Readme/winning screenshot.png">
 
 ## Technologies
-<p>For this project I used primarily HTML5, CSS, and Javascript<br>I also used the fantastic tool [QQwing](https://qqwing.com) written by (Stephen Osteromiller)[ostermiller.org] to generate a number of boards while working on creating a generate function in my code</p>
+<p>For this project I used primarily HTML5, CSS, and Javascript<br>I also used the fantastic tool https://qqwing.com written by Stephen Osteromiller ostermiller.org to generate a number of boards while working on creating a generate function in my code</p>
 
 
 ## Getting Started
